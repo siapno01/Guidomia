@@ -8,23 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		390D9138273D1B7400FAED14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D9137273D1B7400FAED14 /* AppDelegate.swift */; };
-		390D913A273D1B7400FAED14 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D9139273D1B7400FAED14 /* SceneDelegate.swift */; };
-		390D913C273D1B7400FAED14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D913B273D1B7400FAED14 /* ViewController.swift */; };
-		390D913F273D1B7400FAED14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D913D273D1B7400FAED14 /* Main.storyboard */; };
+		390D913C273D1B7400FAED14 /* GuidomiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D913B273D1B7400FAED14 /* GuidomiaViewController.swift */; };
 		390D9141273D1B7A00FAED14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 390D9140273D1B7A00FAED14 /* Assets.xcassets */; };
 		390D9144273D1B7A00FAED14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D9142273D1B7A00FAED14 /* LaunchScreen.storyboard */; };
+		39204371273EDF7700B242B3 /* GuidomiaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39204370273EDF7700B242B3 /* GuidomiaViewModel.swift */; };
+		39204376273EDF9D00B242B3 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39204375273EDF9D00B242B3 /* MockService.swift */; };
+		39204378273EDFAA00B242B3 /* GuidomiaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39204377273EDFAA00B242B3 /* GuidomiaModel.swift */; };
 		6BDED78C3EFAD24D6FA1AC07 /* Pods_Guidomia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EA95AC8B9827BA209EE3A5 /* Pods_Guidomia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		390D9134273D1B7400FAED14 /* Guidomia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidomia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		390D9137273D1B7400FAED14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		390D9139273D1B7400FAED14 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		390D913B273D1B7400FAED14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		390D913E273D1B7400FAED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		390D913B273D1B7400FAED14 /* GuidomiaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaViewController.swift; sourceTree = "<group>"; };
 		390D9140273D1B7A00FAED14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		390D9143273D1B7A00FAED14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		390D9145273D1B7A00FAED14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39204370273EDF7700B242B3 /* GuidomiaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaViewModel.swift; sourceTree = "<group>"; };
+		39204375273EDF9D00B242B3 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		39204377273EDFAA00B242B3 /* GuidomiaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaModel.swift; sourceTree = "<group>"; };
 		56288A9FBA907CF7F4ECF306 /* Pods-Guidomia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidomia.debug.xcconfig"; path = "Target Support Files/Pods-Guidomia/Pods-Guidomia.debug.xcconfig"; sourceTree = "<group>"; };
 		B7EA95AC8B9827BA209EE3A5 /* Pods_Guidomia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guidomia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8AEAC04ACADDB556DFF953 /* Pods-Guidomia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidomia.release.xcconfig"; path = "Target Support Files/Pods-Guidomia/Pods-Guidomia.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,15 +65,40 @@
 		390D9136273D1B7400FAED14 /* Guidomia */ = {
 			isa = PBXGroup;
 			children = (
+				3920436F273EDF6600B242B3 /* Main */,
 				390D9137273D1B7400FAED14 /* AppDelegate.swift */,
-				390D9139273D1B7400FAED14 /* SceneDelegate.swift */,
-				390D913B273D1B7400FAED14 /* ViewController.swift */,
-				390D913D273D1B7400FAED14 /* Main.storyboard */,
 				390D9140273D1B7A00FAED14 /* Assets.xcassets */,
 				390D9142273D1B7A00FAED14 /* LaunchScreen.storyboard */,
 				390D9145273D1B7A00FAED14 /* Info.plist */,
 			);
 			path = Guidomia;
+			sourceTree = "<group>";
+		};
+		3920436F273EDF6600B242B3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				39204373273EDF8200B242B3 /* MockService */,
+				39204372273EDF7C00B242B3 /* Model */,
+				390D913B273D1B7400FAED14 /* GuidomiaViewController.swift */,
+				39204370273EDF7700B242B3 /* GuidomiaViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		39204372273EDF7C00B242B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39204377273EDFAA00B242B3 /* GuidomiaModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		39204373273EDF8200B242B3 /* MockService */ = {
+			isa = PBXGroup;
+			children = (
+				39204375273EDF9D00B242B3 /* MockService.swift */,
+			);
+			path = MockService;
 			sourceTree = "<group>";
 		};
 		52EF7BA5EC451E4D4E4168FB /* Frameworks */ = {
@@ -88,7 +115,6 @@
 				56288A9FBA907CF7F4ECF306 /* Pods-Guidomia.debug.xcconfig */,
 				CD8AEAC04ACADDB556DFF953 /* Pods-Guidomia.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,7 +180,6 @@
 			files = (
 				390D9144273D1B7A00FAED14 /* LaunchScreen.storyboard in Resources */,
 				390D9141273D1B7A00FAED14 /* Assets.xcassets in Resources */,
-				390D913F273D1B7400FAED14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,23 +232,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				390D913C273D1B7400FAED14 /* ViewController.swift in Sources */,
+				39204378273EDFAA00B242B3 /* GuidomiaModel.swift in Sources */,
+				390D913C273D1B7400FAED14 /* GuidomiaViewController.swift in Sources */,
+				39204371273EDF7700B242B3 /* GuidomiaViewModel.swift in Sources */,
 				390D9138273D1B7400FAED14 /* AppDelegate.swift in Sources */,
-				390D913A273D1B7400FAED14 /* SceneDelegate.swift in Sources */,
+				39204376273EDF9D00B242B3 /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		390D913D273D1B7400FAED14 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				390D913E273D1B7400FAED14 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		390D9142273D1B7A00FAED14 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -363,7 +382,6 @@
 				INFOPLIST_FILE = Guidomia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -391,7 +409,6 @@
 				INFOPLIST_FILE = Guidomia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
