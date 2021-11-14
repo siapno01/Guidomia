@@ -18,6 +18,9 @@ class CarTableViewCell: UITableViewCell {
         let title: String
         let subTitle: String
         let rating: Double
+        let prosList: [String]
+        let consList: [String]
+        var isExpandable: Bool = false
     }
     
     enum CarTypes: String {
@@ -93,7 +96,17 @@ class CarTableViewCell: UITableViewCell {
         view.settings.emptyImage = UIImage(named: "empty_star_icon")
         view.settings.starMargin = 5
         view.settings.starSize = 20
+        view.settings.updateOnTouch = false
         return view
+    }()
+    
+    let consLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Cons: "
+        label.textColor = AppColors.textBlack
+        label.font = UIFont(name: "Arial-BoldMT", size: 14)
+        return label
     }()
     
     let stackView: UIStackView = {
@@ -102,7 +115,30 @@ class CarTableViewCell: UITableViewCell {
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fill
+        stack.spacing = 10
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15)
+        stack.isLayoutMarginsRelativeArrangement = true
+        return stack
+    }()
+    
+    let prosStackVIew: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fill
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
+        stack.isLayoutMarginsRelativeArrangement = true
+        return stack
+    }()
+    
+    let consStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fill
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
     }()
@@ -113,6 +149,8 @@ class CarTableViewCell: UITableViewCell {
         view.backgroundColor = AppColors.orange
         return view
     }()
+    
+    let bullet = "\u{2022}"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -155,6 +193,22 @@ class CarTableViewCell: UITableViewCell {
         title.text = item.title
         subTitle.text = item.subTitle
         cosmos.rating = item.rating
+        
+        if item.prosList.count != 0 {
+            prosStackVIew.removeAllArrangedSubviews()
+            setupExpandableDetails(title: "Pros", desc: item.prosList, mainStack: prosStackVIew)
+            stackView.addArrangedSubview(prosStackVIew)
+        }
+        
+        if item.consList.count != 0 {
+            consStackView.removeAllArrangedSubviews()
+            setupExpandableDetails(title: "Cons", desc: item.consList, mainStack: consStackView)
+            stackView.addArrangedSubview(consStackView)
+        }
+        
+        prosStackVIew.isHidden = item.isExpandable ? false : true
+        consStackView.isHidden = item.isExpandable ? false : true
+        
     }
     
     fileprivate func setupDetails() -> UIStackView {
@@ -196,7 +250,7 @@ class CarTableViewCell: UITableViewCell {
         return stack
     }
     
-    func setupLineView() -> UIView {
+    fileprivate func setupLineView() -> UIView {
         
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -212,6 +266,73 @@ class CarTableViewCell: UITableViewCell {
         ])
         
         return view
+    }
+    
+    fileprivate func setupExpandableDetails(title: String, desc: [String], mainStack: UIStackView) {
+        let titleLabel: UILabel = {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "\(title) :"
+            label.textColor = AppColors.textBlack
+            label.font = UIFont(name: "Arial-BoldMT", size: 16)
+            return label
+        }()
+        
+        let stack: UIStackView = {
+            let stack = UIStackView()
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.axis = .vertical
+            stack.alignment = .fill
+            stack.distribution = .fill
+            stack.spacing = 5
+            stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10)
+            stack.isLayoutMarginsRelativeArrangement = true
+            return stack
+        }()
+        
+        mainStack.addArrangedSubview(titleLabel)
+        
+        desc.forEach { item in
+            
+            guard !item.isEmpty else { return }
+            
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "\(bullet) \(item)"
+            label.textColor = AppColors.bulletText
+            label.font = UIFont(name: "Arial-BoldMT", size: 14)
+            setContent(label: label)
+            stack.addArrangedSubview(label)
+        }
+        
+        mainStack.addArrangedSubview(stack)
+    }
+    
+    func setContent(label: UILabel) {
+        
+        let appFont = label.font ?? UIFont.systemFont(ofSize: 14)
+        let font = UIFontMetrics.default.scaledFont(for: appFont)
+        let fontSize = font.pointSize
+        let lineHeight: CGFloat = 14.0
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineHeight - fontSize
+        
+        let attributedString =  NSMutableAttributedString(string: label.text ?? "",
+            attributes: [NSAttributedString.Key.font: font,
+                         NSAttributedString.Key.foregroundColor: label.textColor ?? AppColors.bulletText])
+        
+        let range = NSRange(location: 0, length: attributedString.length)
+        
+        attributedString.addAttribute(.paragraphStyle,
+                                           value: paragraphStyle,
+                                           range: range)
+        
+        let bulletRange = attributedString.mutableString.range(of: bullet)
+        attributedString.addAttributes([NSAttributedString.Key.font: font.withSize(16),
+                                        NSAttributedString.Key.foregroundColor: AppColors.orange], range: bulletRange)
+        
+        label.attributedText = attributedString
     }
     
 }

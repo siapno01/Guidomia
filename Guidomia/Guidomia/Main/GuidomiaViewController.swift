@@ -128,6 +128,11 @@ class GuidomiaViewController: UIViewController {
             return cell
         }.disposed(by: disposeBag)
         
+        tableView.rx.itemSelected
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.didTap(idx: indexPath)
+            }).disposed(by: disposeBag)
         
     }
 
