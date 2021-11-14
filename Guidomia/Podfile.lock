@@ -1,4 +1,5 @@
 PODS:
+  - Cosmos (23.0.0)
   - Differentiator (4.0.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
@@ -15,6 +16,7 @@ PODS:
   - RxSwift (5.1.2)
 
 DEPENDENCIES:
+  - Cosmos (~> 23.0)
   - RxCocoa (~> 5.1.0)
   - RxDataSources
   - RxGesture (~> 3.0.2)
@@ -22,6 +24,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Cosmos
     - Differentiator
     - RxCocoa
     - RxDataSources
@@ -30,6 +33,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -37,6 +41,6 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
 
-PODFILE CHECKSUM: 7b7370c7510e4c16d9fa6a2893bc5aa8f074671a
+PODFILE CHECKSUM: 3da9bb08f1ac8a4e0ec85a03a8dbb2ae0c05f205
 
 COCOAPODS: 1.11.0

@@ -10,5 +10,5 @@ target 'Guidomia' do
   pod 'RxCocoa', '~> 5.1.0'
   pod 'RxDataSources'
   pod 'RxGesture', '~> 3.0.2'
-
+  pod 'Cosmos', '~> 23.0'
 end
