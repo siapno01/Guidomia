@@ -201,7 +201,7 @@ extension GuidomiaViewController: UITableViewDelegate {
                     let data = self.viewModel.savedItems
                     let filtered = data.filter { $0.make.contains(textfield.text ?? "")}.map { $0.make as String }
                     
-                    cell.setupDropdown(anchorView: textfield, data: filtered) { itemSelected in
+                    cell.setupDropdown(data: filtered) { itemSelected in
                         self.viewModel.loadData(type: .make, idx: section, text: itemSelected)
                     }
                 }
@@ -221,7 +221,7 @@ extension GuidomiaViewController: UITableViewDelegate {
                     let data = self.viewModel.savedItems
                     let filtered = data.filter { $0.model.contains(textfield.text ?? "")}.map { $0.model as String }
                     
-                    cell.setupModelDropdown(anchorView: textfield, data: filtered) { itemSelected in
+                    cell.setupModelDropdown(data: filtered) { itemSelected in
                         self.viewModel.loadData(type: .model, idx: section, text: itemSelected)
                     }
                 }

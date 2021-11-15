@@ -146,9 +146,9 @@ class FilterHeaderViewCell: UITableViewHeaderFooterView {
         
     }
     
-    func setupDropdown(anchorView: UIView, data: [String], completion: @escaping (_ itemSelected: String) -> Void) {
+    func setupDropdown(data: [String], completion: @escaping (_ itemSelected: String) -> Void) {
         
-        makeDropDown.anchorView = anchorView
+        makeDropDown.anchorView = makeTextfieldView
         makeDropDown.direction = .bottom
         makeDropDown.dataSource = data
         makeDropDown.bottomOffset = CGPoint(x: 0, y:(makeDropDown.anchorView?.plainView.bounds.height)!)
@@ -162,9 +162,9 @@ class FilterHeaderViewCell: UITableViewHeaderFooterView {
         
     }
     
-    func setupModelDropdown(anchorView: UIView, data: [String], completion: @escaping (_ itemSelected: String) -> Void) {
+    func setupModelDropdown(data: [String], completion: @escaping (_ itemSelected: String) -> Void) {
         
-        modelDropDown.anchorView = anchorView
+        modelDropDown.anchorView = modelTextfieldView
         modelDropDown.direction = .bottom
         modelDropDown.dataSource = data
         modelDropDown.bottomOffset = CGPoint(x: 0, y:(modelDropDown.anchorView?.plainView.bounds.height)!)
