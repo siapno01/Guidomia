@@ -5,7 +5,7 @@
 //  Created by michael.p.siapno on 11/13/21.
 //
 
-import Foundation
+//import Foundation
 import UIKit
 import Cosmos
 
@@ -13,14 +13,20 @@ class CarTableViewCell: UITableViewCell {
     
     static let identifier = "CarTableViewCell"
     
-    struct CarItem {
+    struct CarItem: Hashable {
         let image: UIImage?
         let title: String
         let subTitle: String
         let rating: Double
         let prosList: [String]
         let consList: [String]
+        let make: String
+        let model: String
         var isExpandable: Bool = false
+        
+        static func == (lhs: CarItem, rhs: CarItem) -> Bool {
+            return lhs.model == rhs.model && lhs.make == rhs.make
+        }
     }
     
     enum CarTypes: String {
@@ -179,9 +185,7 @@ class CarTableViewCell: UITableViewCell {
             setupLineView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             setupLineView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             setupLineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            setupLineView.heightAnchor.constraint(equalToConstant: 20),
-            carImage.widthAnchor.constraint(equalToConstant: 120),
-            carImage.heightAnchor.constraint(equalToConstant: 70)
+            setupLineView.heightAnchor.constraint(equalToConstant: 20)
         ])
         
         stackView.addArrangedSubview(mainView)
@@ -196,12 +200,14 @@ class CarTableViewCell: UITableViewCell {
         
         if item.prosList.count != 0 {
             prosStackVIew.removeAllArrangedSubviews()
+            prosStackVIew.removeFromSuperview()
             setupExpandableDetails(title: "Pros", desc: item.prosList, mainStack: prosStackVIew)
             stackView.addArrangedSubview(prosStackVIew)
         }
         
         if item.consList.count != 0 {
             consStackView.removeAllArrangedSubviews()
+            consStackView.removeFromSuperview()
             setupExpandableDetails(title: "Cons", desc: item.consList, mainStack: consStackView)
             stackView.addArrangedSubview(consStackView)
         }
@@ -246,6 +252,11 @@ class CarTableViewCell: UITableViewCell {
         
         stack.addArrangedSubview(carImage)
         stack.addArrangedSubview(setupDetails)
+        
+        NSLayoutConstraint.activate([
+            carImage.widthAnchor.constraint(equalToConstant: 120),
+            carImage.heightAnchor.constraint(equalToConstant: 70)
+        ])
         
         return stack
     }
@@ -333,6 +344,14 @@ class CarTableViewCell: UITableViewCell {
                                         NSAttributedString.Key.foregroundColor: AppColors.orange], range: bulletRange)
         
         label.attributedText = attributedString
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        prosStackVIew.removeAllArrangedSubviews()
+        consStackView.removeAllArrangedSubviews()
+        prosStackVIew.removeFromSuperview()
+        consStackView.removeFromSuperview()
     }
     
 }

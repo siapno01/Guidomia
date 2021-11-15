@@ -19,6 +19,7 @@
 		392043802740034000B242B3 /* GuidomiaMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 3920437F2740034000B242B3 /* GuidomiaMock.json */; };
 		3920438327413AFB00B242B3 /* Double+Abbreviation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3920438227413AFB00B242B3 /* Double+Abbreviation.swift */; };
 		392043852741684400B242B3 /* UIStackView+removeAllArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392043842741684300B242B3 /* UIStackView+removeAllArrangedSubviews.swift */; };
+		3920438727416B6900B242B3 /* FilterHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3920438627416B6800B242B3 /* FilterHeaderViewCell.swift */; };
 		6BDED78C3EFAD24D6FA1AC07 /* Pods_Guidomia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EA95AC8B9827BA209EE3A5 /* Pods_Guidomia.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		3920437F2740034000B242B3 /* GuidomiaMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GuidomiaMock.json; sourceTree = "<group>"; };
 		3920438227413AFB00B242B3 /* Double+Abbreviation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Abbreviation.swift"; sourceTree = "<group>"; };
 		392043842741684300B242B3 /* UIStackView+removeAllArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+removeAllArrangedSubviews.swift"; sourceTree = "<group>"; };
+		3920438627416B6800B242B3 /* FilterHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderViewCell.swift; sourceTree = "<group>"; };
 		56288A9FBA907CF7F4ECF306 /* Pods-Guidomia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidomia.debug.xcconfig"; path = "Target Support Files/Pods-Guidomia/Pods-Guidomia.debug.xcconfig"; sourceTree = "<group>"; };
 		B7EA95AC8B9827BA209EE3A5 /* Pods_Guidomia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guidomia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8AEAC04ACADDB556DFF953 /* Pods-Guidomia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guidomia.release.xcconfig"; path = "Target Support Files/Pods-Guidomia/Pods-Guidomia.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				3920437B273EE53600B242B3 /* CarTableViewCell.swift */,
+				3920438627416B6800B242B3 /* FilterHeaderViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				390D9138273D1B7400FAED14 /* AppDelegate.swift in Sources */,
 				392043852741684400B242B3 /* UIStackView+removeAllArrangedSubviews.swift in Sources */,
 				39204376273EDF9D00B242B3 /* MockService.swift in Sources */,
+				3920438727416B6900B242B3 /* FilterHeaderViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

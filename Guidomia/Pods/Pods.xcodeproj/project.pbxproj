@@ -693,7 +693,7 @@
 		879C3E7AC0C11E531C9B265B37AF648B /* MainScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainScheduler.swift; path = RxSwift/Schedulers/MainScheduler.swift; sourceTree = "<group>"; };
 		87DF8509B46C475D9EE0C0EA2DABF1FD /* WithLatestFrom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WithLatestFrom.swift; path = RxSwift/Observables/WithLatestFrom.swift; sourceTree = "<group>"; };
 		88C3034BB5568E6A360D73DD6C1445C2 /* RxPickerViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxPickerViewDataSourceType.swift; path = RxCocoa/iOS/Protocols/RxPickerViewDataSourceType.swift; sourceTree = "<group>"; };
-		890296137C1F2FE929AA259AC9EC9182 /* Pods-Guidomia */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Guidomia"; path = Pods_Guidomia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		890296137C1F2FE929AA259AC9EC9182 /* Pods_Guidomia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guidomia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8983ABE318A0AB19B3C75D6B2B01F2A2 /* UIControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIControl+Rx.swift"; path = "RxCocoa/iOS/UIControl+Rx.swift"; sourceTree = "<group>"; };
 		89B548FB327413064175311F78322A0B /* ElementAt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementAt.swift; path = RxSwift/Observables/ElementAt.swift; sourceTree = "<group>"; };
 		89BA53B3B1C2245C0DEF30D44965ADD8 /* HistoricalScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoricalScheduler.swift; path = RxSwift/Schedulers/HistoricalScheduler.swift; sourceTree = "<group>"; };
@@ -728,7 +728,7 @@
 		9BD416F2479099BEE05287C523FC6934 /* Reactive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reactive.swift; path = RxSwift/Reactive.swift; sourceTree = "<group>"; };
 		9CC74C6964D5A54B1F3007447664AEE0 /* RxGesture-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RxGesture-prefix.pch"; sourceTree = "<group>"; };
 		9D605E050E44591EFCE8D0F1FBE7D06E /* SharedTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SharedTypes.swift; path = Pod/Classes/SharedTypes.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E951F34A9B335EE72F7A4FC5C5F4D87 /* SectionedViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SectionedViewDataSourceType.swift; path = RxCocoa/Common/SectionedViewDataSourceType.swift; sourceTree = "<group>"; };
 		9EABD37A8746691ECF9EA0E8180D055B /* InvocableScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableScheduledItem.swift; path = RxSwift/Schedulers/Internal/InvocableScheduledItem.swift; sourceTree = "<group>"; };
 		9F7D830B3C1FAF3B50580FBDFD00F7F4 /* UIRefreshControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIRefreshControl+Rx.swift"; path = "RxCocoa/iOS/UIRefreshControl+Rx.swift"; sourceTree = "<group>"; };
@@ -970,7 +970,6 @@
 				1D1ECE8BC1D852F86ED128FA5C4BAB68 /* View+RxGesture.swift */,
 				15AA0A43A3972B19A8157EA49DA6F55F /* Support Files */,
 			);
-			name = RxGesture;
 			path = RxGesture;
 			sourceTree = "<group>";
 		};
@@ -1006,7 +1005,6 @@
 				1251C56FB5740D1E21EC0B24AFA58DD1 /* Utilities.swift */,
 				98ECDE649D7470C807E63482F053603C /* Support Files */,
 			);
-			name = Differentiator;
 			path = Differentiator;
 			sourceTree = "<group>";
 		};
@@ -1015,7 +1013,7 @@
 			children = (
 				05C4280976BF93DA8B36818DE2E2A5E0 /* Cosmos */,
 				D51C3D0C53D23B97B032E3BDD4F82C82 /* Differentiator */,
-				890296137C1F2FE929AA259AC9EC9182 /* Pods-Guidomia */,
+				890296137C1F2FE929AA259AC9EC9182 /* Pods_Guidomia.framework */,
 				BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa */,
 				692F92D73EC27270EA9CC9575C3E65B6 /* RxDataSources */,
 				4C7573034822F093BCAF13EC6B7B8454 /* RxGesture */,
@@ -1180,7 +1178,6 @@
 				12ACC4BB8ECDDB933FEB0B7E64B7D915 /* Zip+Collection.swift */,
 				B40FD19685289E1B62AFB56BBCC857EF /* Support Files */,
 			);
-			name = RxSwift;
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
@@ -1227,7 +1224,6 @@
 				3EA6971222AF04D23C834AF0387EC77C /* StarLayer.swift */,
 				4AD9DF5342F3A78D9C85B57EF3899ECE /* Support Files */,
 			);
-			name = Cosmos;
 			path = Cosmos;
 			sourceTree = "<group>";
 		};
@@ -1248,7 +1244,6 @@
 				41A7F849E60725589CD15DBAD2A87C00 /* Utils.swift */,
 				8893293327D3281CBCF11AC11804D1A1 /* Support Files */,
 			);
-			name = RxRelay;
 			path = RxRelay;
 			sourceTree = "<group>";
 		};
@@ -1335,7 +1330,6 @@
 				D31A8549B6D97EDB5E6FE4EE377CA48A /* ViewTransition.swift */,
 				CB36A1638C2A36B26F1A090EC51976D5 /* Support Files */,
 			);
-			name = RxDataSources;
 			path = RxDataSources;
 			sourceTree = "<group>";
 		};
@@ -1481,7 +1475,6 @@
 				6D89869A694AA8105B35BC2C76C0BD6E /* WKWebView+Rx.swift */,
 				EFDD6BF4DC32C6026076AAFFAEFE26E7 /* Support Files */,
 			);
-			name = RxCocoa;
 			path = RxCocoa;
 			sourceTree = "<group>";
 		};
@@ -1708,7 +1701,7 @@
 			);
 			name = "Pods-Guidomia";
 			productName = Pods_Guidomia;
-			productReference = 890296137C1F2FE929AA259AC9EC9182 /* Pods-Guidomia */;
+			productReference = 890296137C1F2FE929AA259AC9EC9182 /* Pods_Guidomia.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7AD0C6DCDC9CEC8A3C7C10C7FEE07BE6 /* RxCocoa */ = {

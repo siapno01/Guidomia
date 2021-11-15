@@ -20,13 +20,18 @@ class GuidomiaViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: UITableView.Style.grouped)
+        view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.estimatedRowHeight = 150
+        view.estimatedRowHeight = 40
         view.rowHeight = UITableView.automaticDimension
+        view.estimatedSectionFooterHeight = 150
+        view.sectionHeaderHeight = UITableView.automaticDimension
         view.separatorStyle = .none
         view.contentInsetAdjustmentBehavior = .always
         view.clipsToBounds = true
+        view.backgroundColor = .white
         view.register(CarTableViewCell.self, forCellReuseIdentifier: CarTableViewCell.identifier)
+        view.register(FilterHeaderViewCell.self, forHeaderFooterViewReuseIdentifier: FilterHeaderViewCell.identifier)
         return view
     }()
     
@@ -119,20 +124,25 @@ class GuidomiaViewController: UIViewController {
 
     fileprivate func setUpModelObservables() {
         
-        viewModel.items.asObservable().bind(to: tableView.rx.items) { (tbl, _, item) -> UITableViewCell in
-           
-            guard let cell = tbl.dequeueReusableCell(withIdentifier: CarTableViewCell.identifier) as? CarTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.config(item: item)
-            return cell
-        }.disposed(by: disposeBag)
+        let dataSource = RxTableViewSectionedReloadDataSource<GuidomiaViewModel.ModelContent>(
+            configureCell: { _, tbl, indexPath, item in
+                guard let cell = tbl.dequeueReusableCell(withIdentifier: CarTableViewCell.identifier) as? CarTableViewCell else {
+                    return UITableViewCell()
+                }
+                cell.config(item: item)
+                return cell
+        })
+
+        viewModel.modelContent.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] indexPath in
                 self?.viewModel.didTap(idx: indexPath)
             }).disposed(by: disposeBag)
+        
         
     }
 
@@ -169,3 +179,57 @@ class GuidomiaViewController: UIViewController {
     
 }
 
+// MARK: - Extensions
+
+extension GuidomiaViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: FilterHeaderViewCell.identifier) as? FilterHeaderViewCell else {
+            return UITableViewHeaderFooterView()
+        }
+        
+        cell.makeTextField.rx.controlEvent([.editingChanged])
+            .map({ cell.makeTextField })
+            .asObservable()
+            .subscribe(onNext: { textfield in
+            
+                let txtField = textfield.text ?? ""
+                let modelTextField = cell.modelTextField.text ?? ""
+                if txtField.isEmpty && modelTextField.isEmpty {
+                    self.viewModel.loadData()
+                } else {
+                    let data = self.viewModel.savedItems
+                    let filtered = data.filter { $0.make.contains(textfield.text ?? "")}.map { $0.make as String }
+                    
+                    cell.setupDropdown(anchorView: textfield, data: filtered) { itemSelected in
+                        self.viewModel.loadData(type: .make, idx: section, text: itemSelected)
+                    }
+                }
+                
+            }).disposed(by: disposeBag)
+        
+        cell.modelTextField.rx.controlEvent([.editingChanged])
+            .map({ cell.modelTextField })
+            .asObservable()
+            .subscribe(onNext: { textfield in
+                
+                let txtField = textfield.text ?? ""
+                let makeTextField = cell.makeTextField.text ?? ""
+                if txtField.isEmpty && makeTextField.isEmpty {
+                    self.viewModel.loadData()
+                } else {
+                    let data = self.viewModel.savedItems
+                    let filtered = data.filter { $0.model.contains(textfield.text ?? "")}.map { $0.model as String }
+                    
+                    cell.setupModelDropdown(anchorView: textfield, data: filtered) { itemSelected in
+                        self.viewModel.loadData(type: .model, idx: section, text: itemSelected)
+                    }
+                }
+                
+            }).disposed(by: disposeBag)
+        
+        return cell
+        
+    }
+    
+}
