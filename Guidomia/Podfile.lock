@@ -2,6 +2,11 @@ PODS:
   - Cosmos (23.0.0)
   - Differentiator (4.0.1)
   - DropDown (2.3.13)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -19,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - Cosmos (~> 23.0)
   - DropDown (= 2.3.13)
+  - RealmSwift (= 4.3.2)
   - RxCocoa (~> 5.1.0)
   - RxDataSources
   - RxGesture (~> 3.0.2)
@@ -29,6 +35,8 @@ SPEC REPOS:
     - Cosmos
     - Differentiator
     - DropDown
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxDataSources
     - RxGesture
@@ -39,12 +47,14 @@ SPEC CHECKSUMS:
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
 
-PODFILE CHECKSUM: 370659ea850d02d106a3707639994e5dcabf6acc
+PODFILE CHECKSUM: 65333fd8ee48fb31244fe0cd0264cd5566c67f59
 
 COCOAPODS: 1.11.0

@@ -9,6 +9,8 @@ import Foundation
 import RxSwift
 import RxDataSources
 import RxCocoa
+import Realm
+import RealmSwift
 
 
 extension GuidomiaViewModel.ModelContent: SectionModelType {
@@ -45,37 +47,56 @@ class GuidomiaViewModel {
     }
     
     func loadData() {
-        
-        MockService.guidomiaMockService { model in
+        let realmData = GuidomiaRealm.data()
+        if realmData.count > 0 {
+            var model: [GuidomiaModel] = []
             
-            if model.count > 0 {
-                let data = model.sorted { $0.make < $1.make && $0.model > $1.model }
-                
-                var carItems: [CarTableViewCell.CarItem] = []
-                
-                data.enumerated().forEach { item in
-                    
-                    guard let carType = CarTableViewCell.CarTypes(rawValue: item.element.make) else { return }
-                
-                    let carItem = CarTableViewCell.CarItem(image: carType == .none ? UIImage() : carType.image,
-                                                           title: carType == .none ? item.element.model : carType.name,
-                                                           subTitle: "Price: \(Double(item.element.customerPrice).formatAbreviation)",
-                                                           rating: Double(item.element.rating),
-                                                           prosList: item.element.prosList,
-                                                           consList: item.element.consList,
-                                                           make: item.element.make,
-                                                           model: item.element.model,
-                                                           isExpandable: item.offset == 0 ? true : false)
-                    
-                    carItems.append(carItem)
-                    
-                }
-                self.savedItems = carItems
-                self.modelContent.accept([ModelContent(items: carItems)])
+            realmData.forEach { realm in
+                let modelData = GuidomiaModel(consList: realm.consList.compactMap {$0},
+                                              customerPrice: realm.customerPrice,
+                                              make: realm.make,
+                                              marketPrice: realm.marketPrice,
+                                              model: realm.model,
+                                              prosList: realm.prosList.compactMap {$0},
+                                              rating: realm.rating)
+                model.append(modelData)
             }
-            
+            self.setupData(model: model)
+            print("REALM::WITHDATASAVED:")
+        } else {
+            print("REALM::NODATASAVED")
+            MockService.guidomiaMockService { model in
+                self.setupData(model: model)
+            }
         }
-        
+    }
+    
+    fileprivate func setupData(model: [GuidomiaModel]) {
+        if model.count > 0 {
+            let data = model.sorted { $0.make < $1.make && $0.model > $1.model }
+            
+            var carItems: [CarTableViewCell.CarItem] = []
+            
+            data.enumerated().forEach { item in
+                
+                guard let carType = CarTableViewCell.CarTypes(rawValue: item.element.make) else { return }
+            
+                let carItem = CarTableViewCell.CarItem(image: carType == .none ? UIImage() : carType.image,
+                                                       title: carType == .none ? item.element.model : carType.name,
+                                                       subTitle: "Price: \(Double(item.element.customerPrice).formatAbreviation)",
+                                                       rating: Double(item.element.rating),
+                                                       prosList: item.element.prosList,
+                                                       consList: item.element.consList,
+                                                       make: item.element.make,
+                                                       model: item.element.model,
+                                                       isExpandable: item.offset == 0 ? true : false)
+                
+                carItems.append(carItem)
+                
+            }
+            self.savedItems = carItems
+            self.modelContent.accept([ModelContent(items: carItems)])
+        }
     }
     
     func didTap(idx: IndexPath) {

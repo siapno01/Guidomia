@@ -12,4 +12,5 @@ target 'Guidomia' do
   pod 'RxGesture', '~> 3.0.2'
   pod 'Cosmos', '~> 23.0'
   pod 'DropDown', '2.3.13'
+  pod 'RealmSwift', '4.3.2'
 end
