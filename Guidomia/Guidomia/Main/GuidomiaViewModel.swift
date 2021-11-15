@@ -105,7 +105,7 @@ class GuidomiaViewModel {
             
             let items = filteredSearched.map { $0.item }
             
-            let unique = Array(Set(items.compactMap { CarTableViewCell.CarItem(image: $0.image,
+            var unique = Array(Set(items.compactMap { CarTableViewCell.CarItem(image: $0.image,
                                                                                title: $0.title,
                                                                                subTitle: $0.subTitle,
                                                                                rating: $0.rating,
@@ -113,6 +113,11 @@ class GuidomiaViewModel {
                                                                                consList: $0.consList,
                                                                                make: $0.make,
                                                                                model: $0.model) } ))
+                .sorted { $0.make < $1.make && $0.model > $1.model }
+            
+            if unique.count > 0 {
+                unique[0].isExpandable = true
+            }
             
             self.searchedItems = filteredSearched
             self.modelContent.accept([ModelContent(items: unique)])
@@ -123,7 +128,7 @@ class GuidomiaViewModel {
             
             let items = filteredSearched.map { $0.item }
             
-            let unique = Array(Set(items.compactMap { CarTableViewCell.CarItem(image: $0.image,
+            var unique = Array(Set(items.compactMap { CarTableViewCell.CarItem(image: $0.image,
                                                                                title: $0.title,
                                                                                subTitle: $0.subTitle,
                                                                                rating: $0.rating,
@@ -131,7 +136,12 @@ class GuidomiaViewModel {
                                                                                consList: $0.consList,
                                                                                make: $0.make,
                                                                                model: $0.model) } ))
+                .sorted { $0.make < $1.make && $0.model > $1.model }
         
+            if unique.count > 0 {
+                unique[0].isExpandable = true
+            }
+            
             self.searchedItems = filteredSearched
             self.modelContent.accept([ModelContent(items: unique)])
         }

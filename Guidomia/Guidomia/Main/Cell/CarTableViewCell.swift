@@ -25,7 +25,7 @@ class CarTableViewCell: UITableViewCell {
         var isExpandable: Bool = false
         
         static func == (lhs: CarItem, rhs: CarItem) -> Bool {
-            return lhs.model == rhs.model && lhs.make == rhs.make
+            return lhs.model == rhs.model && lhs.make == rhs.make && lhs.isExpandable == rhs.isExpandable
         }
     }
     
